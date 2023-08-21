@@ -4,6 +4,27 @@ import torch
 import cv2
 
 
+def read_licence_plate_text(image_path):
+    # load the easy ocr text reader
+    easy_ocr = easyocr.Reader(['en'])
+    easy_ocr_threshold = 0.2
+
+    # load the licence plate recognition model
+    print(f"[INFO] Loading model... ")
+    model = torch.hub.load('yolov5', 'custom', source='local', path='model/licence/weights/best.pt', force_reload=True)
+
+    # read the image into the memory
+    image = cv2.imread(image_path)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+    # detect licence plates on the image
+    print(f"[INFO] Detecting licence plates")
+    results = model(image)
+
+    # read the text from the licence plate
+    return read_licence_plate(results.xyxyn[0][:, -1], results.xyxyn[0][:, :-1], image, easy_ocr, easy_ocr_threshold)
+
+
 def read_licence_plate(labels, cord, image, reader, region_threshold):
     detection_count = len(labels)
     x_shape, y_shape = image.shape[1], image.shape[0]
@@ -59,26 +80,3 @@ def filter_text(region, ocr_result, region_threshold):
         if length * height / rectangle_size > region_threshold:
             plate.append(result[1])
     return plate
-
-
-if __name__ == '__main__':
-    # load the easy ocr text reader
-    easy_ocr = easyocr.Reader(['en'])
-    easy_ocr_threshold = 0.2
-
-    # load the licence plate recognition model
-    print(f"[INFO] Loading model... ")
-    model = torch.hub.load('yolov5', 'custom', source='local', path='model/licence/weights/best.pt', force_reload=True)
-
-    # read the image into the memory
-    image = cv2.imread("C:/Users/mat/Desktop/car.jpg")
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
-    # detect licence plates on the image
-    print(f"[INFO] Detecting licence plates")
-    results = model(image)
-
-    # read the text from the licence plate
-    licence_plate = read_licence_plate(results.xyxyn[0][:, -1], results.xyxyn[0][:, :-1], image, easy_ocr, easy_ocr_threshold)
-    print(f"[INFO] Licence plate '{licence_plate}'")
-
