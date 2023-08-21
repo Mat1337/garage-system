@@ -20,3 +20,4 @@ garage system security system based on licence plates
 
 # credits
 [Dataset](https://www.kaggle.com/datasets/andrewmvd/car-plate-detection)
+[Model](https://github.com/ultralytics/yolov5)
