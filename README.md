@@ -9,7 +9,7 @@ garage system security system based on licence plates
   conda activate yolov5
 ```
 ```shell
-  pip install torch torchvision opencv-python
+  pip install torch torchvision opencv-python easyocr
 ```
 ```shell
   cd yolov5
@@ -19,6 +19,6 @@ garage system security system based on licence plates
 ```
 
 # credits
-**[Dataset](https://www.kaggle.com/datasets/andrewmvd/car-plate-detection)**
+**[dataset](https://www.kaggle.com/datasets/andrewmvd/car-plate-detection)**
 <br>
-**[Model](https://github.com/ultralytics/yolov5)**
+**[model](https://github.com/ultralytics/yolov5)**
