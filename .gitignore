@@ -1,3 +1,4 @@
+.idea/
 train.cache
 train.cache.npy
 val.cache
