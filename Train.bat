@@ -4,7 +4,7 @@
 CD yolov5
 
 :: train the model
-python train.py --img 450 --batch 30 --epochs 15 --data ../Licence.yaml --weights yolov5m.pt
+python train.py --img 450 --batch 30 --epochs 15 --data ../model/LicenceModel.yaml --weights yolov5m.pt
 
 :: revert to the original root directory
 CD ..
