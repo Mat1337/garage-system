@@ -9,7 +9,7 @@ garage system security system based on licence plates
   conda activate yolov5
 ```
 ```shell
-  pip install torch torchvision opencv-python easyocr
+  pip install torch torchvision opencv-python easyocr flask
 ```
 ```shell
   cd yolov5
