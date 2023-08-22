@@ -22,7 +22,7 @@ def index():
 
             # make sure that the file was provided
             if image.filename == "":
-                return "No selected file"
+                return render_template("failure.html")
 
             # get the file extension (suffix) of the image
             file_extension = os.path.splitext(image.filename)[1]
@@ -38,10 +38,10 @@ def index():
 
             # make sure that text was found on the licence plate
             if len(plate_text) == 0:
-                return "ERROR: Failed to locate the licence plate"
+                return render_template("failure.html")
 
             # read the licence plate from the image and return it
-            return plate_text
+            return render_template("success.html")
 
     # if the request was not post, return the default index.html file
     return render_template("index.html")
