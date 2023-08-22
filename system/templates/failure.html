@@ -52,6 +52,11 @@
         div.container form  h1 {
             color: red;        
         }
+
+        div.container form  h3 {
+            font-size: 20px;
+            padding: 30px;
+        }
       </style>
    </head>
    <body>
@@ -59,7 +64,8 @@
          <form method="post" enctype="multipart/form-data">
             <h1>Failure</h1>
             <br>
-            <h2>You car does have have access <br> to this garage</h2>
+            <h2>Your car does not have access <br> to this garage</h2>
+            <h3>{{licence_plate}}</h3>
          </form>
       </div>
    </body>

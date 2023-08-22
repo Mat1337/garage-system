@@ -38,10 +38,10 @@ def index():
 
             # make sure that text was found on the licence plate
             if len(plate_text) == 0:
-                return render_template("failure.html")
+                return render_template("failure.html", licence_plate=plate_text)
 
             # read the licence plate from the image and return it
-            return render_template("success.html")
+            return render_template("success.html", licence_plate=plate_text)
 
     # if the request was not post, return the default index.html file
     return render_template("index.html")
