@@ -1,6 +1,16 @@
 # garage-system
 garage system security system based on licence plates
 
+# model
+traning data for the model was split in following ration:
+- traning data: **60%**
+- validation data: **20%**
+- testing data: **20%**
+
+it was trained on **15** epochs with the batch size of **30**
+
+![asd](model/licence/results.png)
+
 # setup
 
 ### anaconda
