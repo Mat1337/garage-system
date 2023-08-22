@@ -1,0 +1,123 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #111;
+    font-family: 'Lexend', sans-serif;
+}
+
+div.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ div.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ div.container form {
+    width: fit-content;
+    background: #333;
+    color: #fff;
+    padding: 25px;
+    text-align: center;
+    border-radius: 5px;
+ }
+
+ div.container form input#submit {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    background: #222;
+    color: #fff;
+    border-radius: 5px;
+    border-style: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all .1s;
+ }
+
+ div.container form input#submit:hover {
+    background: #111;
+    transition: all .1s;
+    cursor: pointer;
+ }
+
+ div.container form input#image {
+    display: none;
+ }
+
+ div.container form label svg {
+    padding: 20px;
+    font-size: 45px;
+    transition: all .1s;
+    margin: 20px;
+ }
+
+ div.container form label svg:hover {
+    font-size: 50px;
+    transition: all .1s;
+    cursor: pointer;
+ }
+
+ div.container form p {
+    font-size: 13px;
+    margin: 10px;
+    font-weight: bold;
+ }
+
+ div.container form input#submit {
+   width: 80%;
+   padding: 10px;
+   margin: 10px;
+}
+
+div.container form input#image {
+   width: 80%;
+   padding: 5px;
+   margin: 50px;
+}
+
+div.container form p {
+   font-size: 13px;
+   margin: 10px;
+   font-weight: bold;
+}
+
+div.container form  h1#success {
+   color: green;        
+}
+
+div.container form  h1#failure {
+   color: red;        
+}
+
+div.container form  h3 {
+   font-size: 20px;
+   padding: 30px;
+}
+
+div.container a {
+   text-decoration: none;
+   background-color: #222;
+   padding: 10px;
+   margin: 15px;
+   color: #fff;
+   border-radius: 5px;
+   transition: all .1s;
+}
+
+div.container a:hover {
+   background: #111;
+   transition: all .1s;
+}

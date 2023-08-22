@@ -37,15 +37,17 @@ def index():
             plate_text = detect.read_licence_plate_text(file_name)
 
             # make sure that text was found on the licence plate
-            if len(plate_text) == 0:
-                return render_template("failure.html", licence_plate=plate_text)
+            if plate_text is None or len(plate_text) == 0:
+                return render_template("responses/failure.html", licence_plate=plate_text)
 
             # read the licence plate from the image and return it
-            return render_template("success.html", licence_plate=plate_text)
+            return render_template("responses/success.html", licence_plate=plate_text)
 
     # if the request was not post, return the default index.html file
     return render_template("index.html")
 
 
+# on the main entry point
+# start the flask server
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
