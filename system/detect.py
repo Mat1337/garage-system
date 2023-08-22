@@ -3,22 +3,20 @@ import numpy
 import torch
 import cv2
 
+# load the licence plate recognition model
+model = torch.hub.load('yolov5', 'custom', source='local', path='model/licence/weights/best.pt', force_reload=True)
+
+# load the easy ocr text reader
+easy_ocr = easyocr.Reader(['en'])
+easy_ocr_threshold = 0.2
+
 
 def read_licence_plate_text(image_path):
-    # load the easy ocr text reader
-    easy_ocr = easyocr.Reader(['en'])
-    easy_ocr_threshold = 0.2
-
-    # load the licence plate recognition model
-    print(f"[INFO] Loading model... ")
-    model = torch.hub.load('yolov5', 'custom', source='local', path='model/licence/weights/best.pt', force_reload=True)
-
     # read the image into the memory
     image = cv2.imread(image_path)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     # detect licence plates on the image
-    print(f"[INFO] Detecting licence plates")
     results = model(image)
 
     # read the text from the licence plate
@@ -28,9 +26,6 @@ def read_licence_plate_text(image_path):
 def read_licence_plate(labels, cord, image, reader, region_threshold):
     detection_count = len(labels)
     x_shape, y_shape = image.shape[1], image.shape[0]
-
-    print(f"[INFO] Total {detection_count} detections")
-    print(f"[INFO] Searching for the licence plate")
 
     # used for finding the best possible licence plate on the image
     detection_threshold = 0.55

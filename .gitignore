@@ -1,5 +1,7 @@
 .idea/
+uploads/
 train.cache
 train.cache.npy
 val.cache
 val.cache.npy
+*__pycache__
