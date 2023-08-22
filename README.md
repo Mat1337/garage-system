@@ -22,6 +22,6 @@ it was trained on **15** epochs with the batch size of **30**
 ```
 
 # credits
-**[dataset](https://www.kaggle.com/datasets/andrewmvd/car-plate-detection)**
-<br>
-**[model](https://github.com/ultralytics/yolov5)**
+>**[dataset](https://www.kaggle.com/datasets/andrewmvd/car-plate-detection)**
+><br>
+>**[model](https://github.com/ultralytics/yolov5)**
