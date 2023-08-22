@@ -5,3 +5,4 @@ train.cache.npy
 val.cache
 val.cache.npy
 *__pycache__
+*.db
