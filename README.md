@@ -1,5 +1,5 @@
 # garage-system
-garage system security system based on licence plates
+proof of concept garage security system written in python
 
 # model
 traning data for the model was split in following ration:
@@ -9,7 +9,7 @@ traning data for the model was split in following ration:
 
 it was trained on **15** epochs with the batch size of **30**
 
-![asd](model/licence/results.png)
+![traning-result](model/licence/results.png)
 
 # setup
 
