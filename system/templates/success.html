@@ -29,6 +29,7 @@
             color: #fff;
             padding: 25px;
             text-align: center;
+            border-radius: 5px;
          }
 
          div.container form input#submit {
@@ -57,6 +58,21 @@
             font-size: 20px;
             padding: 30px;
         }
+
+        div.container a {
+            text-decoration: none;
+            background-color: #222;
+            padding: 10px;
+            margin: 15px;
+            color: #fff;
+            border-radius: 5px;
+            transition: all .1s;
+        }
+
+        div.container a:hover {
+            background: #111;
+            transition: all .1s;
+        }
       </style>
    </head>
    <body>
@@ -66,6 +82,7 @@
             <br>
             <h2>Your car has been approved <br> the ramp will rise shortly</h2>
             <h3>{{licence_plate}}</h3>
+            <a href="/">Continue</a>
          </form>
       </div>
    </body>
