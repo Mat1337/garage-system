@@ -1,21 +1,14 @@
 # garage-system
 garage system security system based on licence plates
 
-# creating the conda env
+# setup
+
+### anaconda
+
 ```shell
-  conda create -n yolov5 python=3.8
-```
-```shell 
-  conda activate yolov5
-```
-```shell
-  pip install torch torchvision opencv-python easyocr flask
-```
-```shell
-  cd yolov5
-```
-```shell
-  pip install -r requirements.txt
+  conda create -n garage python=3.8
+  conda activate garage
+  setup.bat
 ```
 
 # credits
