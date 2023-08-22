@@ -1,5 +1,4 @@
 import easyocr
-import numpy
 import torch
 import cv2
 
@@ -58,20 +57,19 @@ def read_text(img, coords, reader, region_threshold):
 
     # read the text from the licence plate image
     ocr_result = reader.readtext(number_plate)
-    text = filter_text(region=number_plate, ocr_result=ocr_result, region_threshold=region_threshold)
-    if len(text) == 1:
-        text = text[0].upper()
-    return text
+    plate_text = filter_text(ocr_result, region_threshold)
+
+    # check for the extra space at the beginning
+    if len(plate_text) != 0:
+        plate_text = plate_text[1:]
+
+    # return the licence plate text
+    return plate_text
 
 
-def filter_text(region, ocr_result, region_threshold):
-    rectangle_size = region.shape[0] * region.shape[1]
-
-    plate = []
+def filter_text(ocr_result, region_threshold):
+    plate = ""
     for result in ocr_result:
-        length = numpy.sum(numpy.subtract(result[0][1], result[0][0]))
-        height = numpy.sum(numpy.subtract(result[0][2], result[0][1]))
-
-        if length * height / rectangle_size > region_threshold:
-            plate.append(result[1])
+        if result[2] >= region_threshold:
+            plate += " " + result[1]
     return plate

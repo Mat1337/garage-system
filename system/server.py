@@ -17,7 +17,10 @@ if not os.path.exists(UPLOAD_DIR):
 def index():
     if request.method == "POST":
         if "image" in request.files:
+            # get the file that was uploaded
             image = request.files["image"]
+
+            # make sure that the file was provided
             if image.filename == "":
                 return "No selected file"
 
@@ -30,8 +33,15 @@ def index():
             # save the image
             image.save(file_name)
 
+            # read the text from the licence plate
+            plate_text = detect.read_licence_plate_text(file_name)
+
+            # make sure that text was found on the licence plate
+            if len(plate_text) == 0:
+                return "ERROR: Failed to locate the licence plate"
+
             # read the licence plate from the image and return it
-            return detect.read_licence_plate_text(file_name)
+            return plate_text
 
     # if the request was not post, return the default index.html file
     return render_template("index.html")
