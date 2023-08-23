@@ -24,7 +24,7 @@ div.container {
     align-items: center;
  }
 
- div.container form {
+ div.container form#main {
     width: fit-content;
     background: #333;
     color: #fff;
@@ -33,7 +33,7 @@ div.container {
     border-radius: 5px;
  }
 
- div.container form input#submit {
+ div.container form#main input#submit {
     width: 80%;
     padding: 10px;
     margin: 10px;
@@ -47,62 +47,62 @@ div.container {
     transition: all .1s;
  }
 
- div.container form input#submit:hover {
+ div.container form#main input#submit:hover {
     background: #111;
     transition: all .1s;
     cursor: pointer;
  }
 
- div.container form input#image {
+ div.container form#main input#image {
     display: none;
  }
 
- div.container form label svg {
+ div.container form#main label svg {
     padding: 20px;
     font-size: 45px;
     transition: all .1s;
     margin: 20px;
  }
 
- div.container form label svg:hover {
+ div.container form#main label svg:hover {
     font-size: 50px;
     transition: all .1s;
     cursor: pointer;
  }
 
- div.container form p {
+ div.container form#main p {
     font-size: 13px;
     margin: 10px;
     font-weight: bold;
  }
 
- div.container form input#submit {
+ div.container form#main input#submit {
    width: 80%;
    padding: 10px;
    margin: 10px;
 }
 
-div.container form input#image {
+div.container form#main input#image {
    width: 80%;
    padding: 5px;
    margin: 50px;
 }
 
-div.container form p {
+div.container form#main p {
    font-size: 13px;
    margin: 10px;
    font-weight: bold;
 }
 
-div.container form  h1#success {
+div.container form#main  h1#success {
    color: green;        
 }
 
-div.container form  h1#failure {
+div.container form#main  h1#failure {
    color: red;        
 }
 
-div.container form  h3 {
+div.container form#main  h3 {
    font-size: 20px;
    padding: 30px;
 }
@@ -170,42 +170,69 @@ div.container table button#delete:hover {
     transition: background-color .1s;
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-    background-color: #222;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #666;
-    width: 80%;
-    color: #fff;
-}
-
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover, .close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 a#user_add {
     display: block;
+}
+
+div.modal {
+   display: none;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   justify-content: center;
+   align-items: center;
+   background-color: rgba(0, 0, 0, 0.5);
+}
+
+div.modal div.modal-content {
+   background-color: #333;
+   border-radius: 5px;
+}
+
+div.modal div.modal-content div.modal-header {
+   border-radius: 5px 5px 0px 0px;
+   background-color: #222;
+   color: #fff;
+   display: flex;
+   justify-content: end;
+}
+
+div.modal div.modal-content div.modal-header span.close {
+   padding: 6px 10px;
+   cursor: pointer;
+}
+
+div.modal div.modal-content div.modal-body {
+   padding: 10px;
+}
+
+form#user_add {
+   padding: 10px;
+}
+
+form#user_add label {
+   display: block;
+   color: #fff;
+}
+
+form#user_add input {
+   margin: 10px 0px;
+}
+
+form#user_add input#submit {
+   width: 100%;
+   background-color: #222;
+   border: none;
+   color: #fff;
+   font-weight: bold;
+   padding: 10px;
+   border-radius: 5px;
+   transition: background-color .1s;
+}
+
+form#user_add input#submit:hover {
+   background-color: #111;
+   transition: background-color .1s;
 }

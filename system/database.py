@@ -27,6 +27,7 @@ connection.commit()
 
 
 def get_users():
+    # fetch all the users from the database
     return cursor.execute(
         """
             SELECT * FROM cars
@@ -67,6 +68,32 @@ def create_user(first_name, last_name, licence_plate):
 
     # return true meaning that
     # user has been added
+    return True
+
+def delete_user(id):
+    # if the user does not exist
+    # return out of the method
+    if len(cursor.execute(
+        """
+            SELECT * FROM cars WHERE id=?
+        """, id
+    ).fetchall()) == 0:
+        return False
+    
+    # execute the query that deletes 
+    # the user from the database
+    cursor.execute(
+        """
+            DELETE FROM cars WHERE id=?
+        """, id
+    )
+    
+    # after the query has executed commit
+    # the changes to the database
+    connection.commit()
+
+    # return true meaning that
+    # user has been deleted
     return True
 
 

@@ -93,8 +93,32 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/admin", methods=["GET"])
+@app.route("/admin", methods=["GET", "POST"])
 def admin():
+    if request.method == "POST":
+        # get the action that needs to happen on the current user
+        action = request.form['action']
+
+        # if the action is delete
+        # go ahead and delete the user 
+        # from the database
+        if action == "delete":
+            database.delete_user( request.form['id']);
+    
+        # if the action is create
+        # go ahead and create the user 
+        # from the database
+        if action == "create":
+            # get all the user information
+            # that is needed for its creation
+            first_name = request.form['first_name']
+            last_name = request.form['last_name']
+            licence_plate = request.form['licence_plate']
+
+            # create the user with fetched data
+            database.create_user(first_name, last_name, licence_plate);
+
+    # render the admin panel
     return render_template("admin.html", results=database.get_users())
 
 
