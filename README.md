@@ -6,9 +6,11 @@ proof of concept garage security system written in python
 | Home Page                           | Control Panel                       
 | ----------------------------------- | -----------------------------------
 | ![cat](showcase/home.png) | ![dog](showcase/control_panel.png)
+
 | User Add                            | Error                     
 | ----------------------------------- | -----------------------------------
 | ![cat](showcase/user_add.png) | ![dog](showcase/error.png)
+
 | Success                          
 | -----------------------------------
 | ![cat](showcase/success.png)
