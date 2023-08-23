@@ -1,6 +1,19 @@
 # garage-system
 proof of concept garage security system written in python
 
+# showcase
+
+| Home Page                           | Control Panel                       
+| ----------------------------------- | -----------------------------------
+| ![cat](showcase/home.png) | ![dog](showcase/control_panel.png)
+| User Add                            | Error                     
+| ----------------------------------- | -----------------------------------
+| ![cat](showcase/user_add.png) | ![dog](showcase/error.png)
+| Success                          
+| -----------------------------------
+| ![cat](showcase/success.png)
+
+
 # model
 traning data for the model was split in following ration:
 - traning data: **60%**
