@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, render_template_string
 import database
 import detect
 import uuid
@@ -81,13 +81,13 @@ def index():
         # check the licence plate
         result = check_licence_plate(request)
         if result is None:
-            return render_template("responses/failure.html")
+            return render_template("alert.html", header="ERROR", color="red", message='You dont have access to this garage')
 
-        # get the first name, last name and the licence plate text from the request
-        first_name, last_name, plate_text = result
+        # get the first and last name from the request
+        first_name, last_name, _ = result
 
         # render the success page
-        return render_template("responses/success.html", response=f"{first_name} {last_name} - {plate_text}")
+        return render_template("alert.html", header="SUCCESS", color="green", message=f"Welcome {first_name} {last_name}, door will open shortly")
 
     # if the request was not post, return the default index.html file
     return render_template("index.html")

@@ -1,72 +1,76 @@
+<!DOCTYPE html>
 <html lang="en">
    <head>
-      <title>Garage | Control Panel</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Control Panel</title>
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@600&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind:wght@600&family=Lexend:wght@600&display=swap">
       <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
    </head>
    <body>
       <div class="container">
-         <form id="main" method="post" disabled>
-            <div class="header">
-               <a href="/" id="cp">Back</a>
-            </div>
-             <h1>Control Panel</h1>
-             <br><br>
-             <table>
-               <thead>
+         <div class="container-header">
+            <a href="/" class="button button-sm">Back</a>
+         </div>
+         <h1>Control Panel</h1>
+         <table class="container-table">
+            <thead>
+               <tr>
+                  <th>ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Licence Plate</th>
+                  <th>Action</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for result in results %}
                   <tr>
-                     <th>id</th>
-                     <th>First Name</th>
-                     <th>Last Name</th>
-                     <th>Licence Plate</th>
-                     <th>Action</th>
+                     {% for elem in result %}
+                     <td>{{elem}}</td>
+                     {% endfor %}
+                     <td>
+                        <form action="/admin" method="post">
+                           <input type="text" name="action" value="delete" hidden>
+                           <input type="text" name="id" value="{{result[0]}}" hidden>
+                           <button class="form-button" type="submit">
+                              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                                 <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                 <style>svg{fill:#ffffff}</style>
+                                 <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
+                              </svg>
+                           </button>
+                        </form>
+                     </td>
                   </tr>
-               </thead>
-               <tbody>
-                  {% for result in results %}
-                     <tr>
-                        {% for elem in result %}
-                           <td>{{elem}}</td>
-                        {% endfor %}
-                        <td>
-                           <form action="/admin" method="post">
-                              <input type="text" name="action" value="delete" hidden>
-                              <input type="text" name="id" value="{{result[0]}}" hidden>
-                              <input type="text" name="first_name" value="{{result[1]}}" hidden>
-                              <input type="text" name="last_name" value="{{result[2]}}" hidden>
-                              <input type="text" name="licence_plate" value="{{result[3]}}" hidden>
-                              <button id="delete" type="submit"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></button>
-                          </form>
-                        </td>
-                     </tr>
-                  {% endfor %}
-               </tbody>
-             </table>
-             <br>
-             <a id="user_add">Add User</a>
-         </form>
+               {% endfor %}
+            </tbody>
+         </table>
+         <br><br>
+         <a class="button" id="user_add_btn">Add User</a>
       </div>
       <div class="modal" id="user_add_modal">
-         <div class="modal-content">
-            <div class="modal-header">
-               <span class="close" id="user_close_modal">&times;</span>
-            </div>
-            <div class="modal-body">
-               <form action="/admin" method="post" id="user_add">
-                  <input type="text" name="action" value="create" hidden>
-                  <label for="first_name">First Name:</label>
-                  <input type="text" name="first_name" id="first_name"><br>
-                  <label for="last_name">Last Name:</label>
-                  <input type="text" name="last_name" id="last_name"><br>
-                  <label for="licence_plate">Licence Plate:</label>
-                  <input type="text" name="licence_plate" id="licence_plate"><br>
-                  <input type="submit" name="submit" id="submit" value="Submit">
-              </form>
-            </div>
-          </div>
-        </div>
-      <script type="application/javascript" src="{{ url_for('static', filename='js/modal.js') }}"></script>
+         <div class="modal-container">
+            <form action="/admin" method="post" id="user_add">
+               <h3>&middot; ADD USER</h3>
+               <br>
+               <input type="text" name="action" value="create" hidden>
+               <div class="modal-left">
+                  <label for="first_name">First Name:</label><br><br>
+                  <label for="last_name">Last Name:</label><br><br>
+                  <label for="licence_plate">Licence Plate:</label><br><br>
+               </div>
+               <div class="modal-right">
+                  <input class="modal-input" type="text" name="first_name"><br><br>
+                  <input class="modal-input" type="text" name="last_name"><br><br>
+                  <input class="modal-input" type="text" name="licence_plate"><br><br>
+               </div>
+               <input class="modal-button" type="submit" name="submit" value="Submit">
+            </form>
+         </div>
+      </div>
+      <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
    </body>
 </html>
