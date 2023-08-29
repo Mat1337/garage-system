@@ -66,6 +66,10 @@ traning data for the model was split in following ration:
 - validation data: **20%**
 - testing data: **20%**
 
+structure of the model
+
+![structure](showcase/yolov5_structure.png)
+
 it was trained on **15** epochs with the batch size of **30**
 
 ![traning-result](model/licence/results.png)
