@@ -70,7 +70,7 @@ structure of the model
 
 ![structure](showcase/yolov5_structure.png)
 
-it was trained on **15** epochs with the batch size of **30**
+it was trained on **50** epochs with the batch size of **30**
 
 ![traning-result](model/licence/results.png)
 
