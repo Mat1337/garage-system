@@ -10,6 +10,11 @@ the **YoloV5** model was trained on a custom **[dataset](https://www.kaggle.com/
 detecting licence plates on the provided image. For extracting the text from the image [EasyOCR](https://github.com/JaidedAI/EasyOCR) is used.
 Which is then sent to the backend of the http server and checked against the database if the provided car aka its licence plate has access to the garage system
 
+### disclaimer
+
+this project was made whilst attending [FERIT](https://www.ferit.unios.hr/) and is not ment to
+be used in any sort of production environment
+
 # api
 
 The basic way to check an if the car has access to the garage is to start the http server aka run the ```system/server.py``` and upload
